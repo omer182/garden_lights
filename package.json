@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/omer182/garden_lights/issues"
   },
-  "homepage": "https://github.com/omer182/garden_lights#readme"
+  "homepage": "https://github.com/omer182/garden_lights#readme",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
 }

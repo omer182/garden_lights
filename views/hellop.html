@@ -2,11 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
+    <title>Garden</title>
+    <script src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
 </head>
 <body>
-    <script src="./script.js"> </script>
-    <button onclick="onButtonClick()">Click me!</button>
+    <script>
+        var on = 0;
+        function turnOnLight(){
+            on = on === 1 ? 0 : 1;
+            console.log("WORKS!")
+            $.ajax({
+                url:'https://api.onion.io/v1/devices/0a4d3921-66f9-4e1b-ad6d-531fad110687/onion/gpio',
+                type: "POST",
+                headers: {"X-API-KEY": "RjSelpwWuElfLAsxbaYcjQnjPhElB7OWleIBFwGnQbjycXqYb32r3laoagfg2IzI"},
+                data: JSON.stringify({ "command":"set",
+                        "params":{
+                            "gpio":"0",
+                            "value": on
+                        }}),
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                success: function(data){
+                    console.log(data);
+                }
+            });
+        }
+
+    </script>
+    <button onclick="turnOnLight()">Click me!</button>
 </body>
 </html>
